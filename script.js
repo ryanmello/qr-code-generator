@@ -14,11 +14,19 @@ const onGenerateSubmit = (e) => {
 
         setTimeout(() => {
             hideSpinner();
-        }, 1000);
-    }
 
-    
-};
+            generateQRCode(url, size);
+        }, 1000);
+    }    
+}
+
+const generateQRCode = (url, size) => {
+    const qrcode = new QRCode('qrcode', {
+        text: url,
+        width: size,
+        height: size
+    });
+}
 
 const showSpinner = () => {
    document.getElementById('spinner').style.display = 'block'; 
