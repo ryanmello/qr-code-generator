@@ -4,6 +4,8 @@ const qr = document.getElementById('qrcode');
 const onGenerateSubmit = (e) => {
     e.preventDefault();
 
+    clearUI();
+
     const url = document.getElementById('url').value;
     const size = document.getElementById('size').value;
 
@@ -34,6 +36,10 @@ const showSpinner = () => {
 
 const hideSpinner = () => {
     document.getElementById('spinner').style.display = 'none'; 
+}
+
+const clearUI = () => {
+    qr.innerHTML = '';
 }
 
 hideSpinner();
