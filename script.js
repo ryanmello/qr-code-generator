@@ -48,6 +48,10 @@ const hideSpinner = () => {
 
 const clearUI = () => {
     qr.innerHTML = '';
+    const saveLink = document.getElementById('save-link');
+    if(saveLink){
+        saveLink.remove();
+    }
 }
 
 const createSaveBtn = (saveUrl) => {
