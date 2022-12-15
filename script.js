@@ -3,26 +3,32 @@ const qr = document.getElementById('qrcode');
 
 const onGenerateSubmit = (e) => {
     e.preventDefault();
-
+  
     clearUI();
-
+  
     const url = document.getElementById('url').value;
     const size = document.getElementById('size').value;
-
-    if(url === ''){
-        alert('Please enter a url')
+  
+    // Validate url
+    if (url === '') {
+      alert('Please enter a URL');
     } else {
-        showSpinner();
-
+      showSpinner();
+      // Show spinner for 1 sec
+      setTimeout(() => {
+        hideSpinner();
+        generateQRCode(url, size);
+  
+        // Generate the save button after the qr code image src is ready
         setTimeout(() => {
-            hideSpinner();
-
-            generateQRCode(url, size);
-
-            
-        }, 1000);
-    }    
-}
+          // Get save url
+          const saveUrl = qr.querySelector('img').src;
+          // Create save button
+          createSaveBtn(saveUrl);
+        }, 50);
+      }, 1000);
+    }
+  };
 
 const generateQRCode = (url, size) => {
     const qrcode = new QRCode('qrcode', {
@@ -47,12 +53,13 @@ const clearUI = () => {
 const createSaveBtn = (saveUrl) => {
     const link = document.createElement('a');
     link.id = 'save-link';
-    link.classList = 'bg-red-500 hover:bg-red-700 text-white font-bold py-2 rounded w-1/3 m-auto my-5'
+    link.classList =
+      'bg-red-500 hover:bg-red-700 text-white text-center font-bold py-2 rounded w-1/3 m-auto my-5';
     link.href = saveUrl;
     link.download = 'qrcode';
     link.innerHTML = 'Save Image';
     document.getElementById('generated').appendChild(link);
-}
+  };
 
 hideSpinner();
 
