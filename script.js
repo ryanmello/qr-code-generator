@@ -1,4 +1,4 @@
-const form = document.getElementById('generate-form');
+const button = document.getElementById('generate-form');
 const qr = document.getElementById('qrcode');
 
 const onGenerateSubmit = (e) => {
@@ -58,7 +58,7 @@ const createSaveBtn = (saveUrl) => {
     const link = document.createElement('a');
     link.id = 'save-link';
     link.classList =
-      'bg-red-500 hover:bg-red-700 text-white text-center font-bold py-2 rounded w-1/3 m-auto my-5';
+      'bg-sky-500 hover:bg-sky-700 text-white text-center font-bold py-2 rounded w-1/3 m-auto my-5';
     link.href = saveUrl;
     link.download = 'qrcode';
     link.innerHTML = 'Save Image';
@@ -67,4 +67,4 @@ const createSaveBtn = (saveUrl) => {
 
 hideSpinner();
 
-form.addEventListener('submit', onGenerateSubmit);
+button.addEventListener('click', onGenerateSubmit);
