@@ -59,7 +59,7 @@ const createSaveBtn = (saveUrl) => {
   const link = document.createElement('a');
   link.id = 'save-link';
   link.classList =
-    'bg-sky-500 hover:bg-sky-700 text-white text-center font-bold py-2 rounded w-full m-auto my-5';
+    'bg-sky-500 hover:bg-sky-700 text-white text-center font-bold py-2 rounded w-full m-auto mt-4';
   link.href = saveUrl;
   link.download = 'qrcode';
   link.innerHTML = 'Download PNG';
